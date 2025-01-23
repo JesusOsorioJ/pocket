@@ -1,19 +1,6 @@
 # Aplicación de Chat con React, Socket.IO y TypeScript
 
-Este proyecto es una aplicación de chat interactiva desarrollada con React, TypeScript, y Socket.IO. Proporciona un chat en tiempo real entre usuarios y un bot, con un diseño oscuro/claro, soporte multilingüe y una integración completa con un backend construido en Node.js y Express.
-
----
-
-## **Características**
-
-- **Chat en tiempo real**: Comunicación instantánea usando Socket.IO.
-- **Gestión de mensajes**:
-  - Crear nuevos mensajes.
-  - Eliminar todos los mensajes.
-  - Visualización de mensajes previos almacenados en la base de datos.
-- **Temas oscuros y claros**: Cambia entre modos oscuros y claros con un interruptor.
-- **Soporte multilingüe**: Cambia entre español e inglés con un botón.
-- **Backend conectado**: Backend desarrollado con Node.js, Express y Prisma.
+Este proyecto es una aplicación de chat interactiva desarrollada con React, TypeScript, y Socket.IO. Proporciona un chat entre usuarios y un bot, con integración con backend construido en Node.js y Express.
 
 ---
 
@@ -29,12 +16,9 @@ Este proyecto es una aplicación de chat interactiva desarrollada con React, Typ
 ### **Backend:**
 - Node.js
 - Express
-- Prisma (ORM para manejar la base de datos)
+- Prisma (ORM para manejar la base de datos de mysql)
 - Socket.IO Server
 - Swagger (Documentación de API)
-
-### **Base de datos:**
-- PostgreSQL (configurable para otras bases de datos compatibles con Prisma)
 
 ---
 
@@ -42,67 +26,52 @@ Este proyecto es una aplicación de chat interactiva desarrollada con React, Typ
 
 ### **Requisitos previos:**
 1. Node.js instalado (v16 o superior).
-2. PostgreSQL u otra base de datos configurada.
+2. mysql u otra base de datos configurada.
 3. Tener `pnpm`, `npm` o `yarn` instalado.
 
-### **Pasos para levantar el proyecto:**
+### **Pasos para levantar backend:**
 
-#### **1. Clona el repositorio:**
+#### **1. Ingrese con la consola al backend e instale las dependencias:**
+Desde la raíz del proyecto:
 ```bash
- git clone <URL_DEL_REPOSITORIO>
+ cd back
+ npm install
 ```
 
-#### **2. Configura las variables de entorno:**
-Crea un archivo `.env` en la raíz del proyecto tanto para el backend como para el frontend. Asegúrate de incluir:
-
-**Backend (.env):**
-```
-DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/nombre_bd
-PORT=3000
-VITE_BACKEND_URL=http://localhost:3000
-```
-
-**Frontend (.env):**
-```
-VITE_BACKEND_URL=http://localhost:3000
-```
-
-#### **3. Instala las dependencias:**
-
-Para el backend:
+#### **2. Copie el archivo .env.example y renómbrelo a .env:**
+Ajuste los valores según su configuración de base de datos y puerto.
 ```bash
-cd backend
-pnpm install
+ cp .env.example .env
 ```
 
-Para el frontend:
+#### **3. Configure la base de datos con Prisma y levante la aplicación:**
+Ejecute las migraciones para crear las tablas necesarias en la base de datos.
 ```bash
-cd frontend
-pnpm install
+npm prisma migrate dev
+npm run dev
 ```
 
-#### **4. Configura la base de datos con Prisma:**
-Ejecuta las migraciones para crear las tablas necesarias en la base de datos:
+### **Pasos para levantar frontend:**
+
+#### **1. Ingrese con la consola al frontend e instale las dependencias:**
+Desde la raíz del proyecto y en otra terminal.
 ```bash
-cd backend
-pnpm prisma migrate dev
+ cd front
+ npm install
 ```
 
-#### **5. Levanta el servidor backend:**
+#### **2. Copie el archivo .env.example y renómbrelo a .env:**
+Ajuste el valor de la URL donde se expone el backend.
 ```bash
-pnpm dev
+ cp .env.example .env
 ```
 
-#### **6. Levanta el cliente frontend:**
-En otra terminal:
+#### **4. Levante la aplicación:**
 ```bash
-cd frontend
-pnpm dev
+npm run dev
 ```
 
-El frontend estará disponible en `http://localhost:5173` y el backend en `http://localhost:3000`.
-
----
+Con las dos terminales levantadas, podrá ver la página en la URL mostrada por Vite en la consola.
 
 ## **Estructura del proyecto**
 
@@ -110,11 +79,10 @@ El frontend estará disponible en `http://localhost:5173` y el backend en `http:
 - **`src/components`**: Contiene componentes reutilizables como `Chat`, `ToggleTheme`, y `Language`.
 - **`src/api`**: Funciones para interactuar con la API del backend (obtener, crear y eliminar mensajes).
 - **`src/config`**: Configuración de Socket.IO e internacionalización.
-- **`src/i18n.ts`**: Configuración de i18next para soporte multilingüe.
 
 ### **Backend:**
-- **`/routes`**: Rutas API (por ejemplo, `/api/messages`).
-- **`/config`**: Configuraciones de Express, Swagger, y Socket.IO.
+- **`src/api`**: Rutas API (por ejemplo, `/api/messages`).
+- **`src/config`**: Configuraciones de Express, Swagger, y Socket.IO.
 - **`/prisma`**: Archivos de esquema para la base de datos.
 - **`/docs`**: Documentación Swagger.
 
@@ -124,10 +92,29 @@ El frontend estará disponible en `http://localhost:5173` y el backend en `http:
 
 1. Escribe un mensaje en el campo de entrada y envíalo con el botón de enviar (✈️).
 2. Observa los mensajes en tiempo real gracias a Socket.IO.
+![alt text](<Video de WhatsApp 2025-01-23 a las 11.33.30_318d7098.gif>)
 3. Cambia entre los modos claro y oscuro usando el botón de tema.
 4. Cambia entre español e inglés usando los botones de idioma.
+![alt text](<Vite + React + TS - Google Chrome 2025-01-23 11-04-02.gif>)
 5. Elimina todos los mensajes presionando el botón 🗑️ (confirmación requerida).
+![alt text](<Vite + React + TS - Google Chrome 2025-01-23 11-04-34.gif>)
 
+
+---
+
+## **Para tener en cuenta**
+
+1. Para probar los endpoints, se ha proporcionado un folder de REST Client en el directorio raíz del proyecto de backend. Deberá tener la extensión REST Client en Visual Studio Code. Si aún no la tiene instalada, puede encontrarla [aquí](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)..
+
+2. El frontend en producción se expone en la URL: 
+```bash
+https://pocket-indol.vercel.app/
+```
+3. La documentación del backend con Swagger se encuentra en **URL del backend** + **/docs**. Para produccion:
+
+```bash
+https://pocket-q81q.onrender.com/docs/
+```
 ---
 
 ## **Próximos pasos**
@@ -137,6 +124,4 @@ El frontend estará disponible en `http://localhost:5173` y el backend en `http:
 - Implementar roles para usuarios y administradores.
 
 ---
-
-¡Gracias por probar esta aplicación! Si tienes preguntas o sugerencias, no dudes en abrir un issue en el repositorio.
 
