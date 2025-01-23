@@ -5,8 +5,6 @@ paths:
       description: Obtener todos los mensajes creados en la base de datos
       tags:
         - Message
-      security:
-        - bearerAuth: []
       responses:
         "200":
           description: Arreglo de todos los mensajes creados
@@ -31,8 +29,6 @@ paths:
       description: Crear nuevo mensaje de usuario en la base de datos
       tags:
         - Message
-      security:
-        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -40,7 +36,7 @@ paths:
             schema:
               $ref: "#/components/schemas/newMessage"
       responses:
-        "200":
+        "201":
           description: Mensaje creado
           content:
             application/json:
@@ -67,15 +63,6 @@ paths:
       description: Eliminar todos los mensajes creados
       tags:
         - Message
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          description: plan id
-          required: true
-          schema:
-            type: string
       responses:
         "200":
           description: Mensajes eliminado correctamente
