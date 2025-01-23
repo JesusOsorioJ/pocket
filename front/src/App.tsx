@@ -1,7 +1,6 @@
 import { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import "./config/i18n";
-import "./App.css";
 import ToggleTheme from "./components/ToggleTheme";
 import Language from "./components/Language";
 import { deleteMessages, getAllMessages, newMessage } from "./api/comments";
