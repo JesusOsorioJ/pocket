@@ -47,7 +47,7 @@ Ajuste los valores según su configuración de base de datos y puerto.
 #### **3. Configure la base de datos con Prisma y levante la aplicación:**
 Ejecute las migraciones para crear las tablas necesarias en la base de datos.
 ```bash
-npm prisma migrate dev
+npx prisma migrate dev
 npm run dev
 ```
 
