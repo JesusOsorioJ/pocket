@@ -8,11 +8,11 @@ export default function swagger(router: Router): void {
   console.log('\t- Loading swagger document', __dirname);
 
   try {
-    const files = fs.readdirSync(join(__dirname, '../docs/routes'));
-    const swaggerDoc = yaml.load(join(__dirname, '../docs/swagger.yml'));
+    const files = fs.readdirSync(join(__dirname, '../../docs/routes'));
+    const swaggerDoc = yaml.load(join(__dirname, '../../docs/swagger.yml'));
 
     for (const file of files) {
-      const doc = yaml.load(join(__dirname, `../docs/routes/${file}`));
+      const doc = yaml.load(join(__dirname, `../../docs/routes/${file}`));
 
       if ('paths' in doc) {
         swaggerDoc.paths = { ...swaggerDoc.paths, ...doc.paths };

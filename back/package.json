@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config index.ts"
+    "dev": "nodemon -r dotenv/config src/index.ts",
+    "build": "tsc",
+    "start": "node -r dotenv/config dist/index.js"
   },
   "author": "",
   "license": "ISC",
