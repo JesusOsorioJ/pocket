@@ -1,0 +1,139 @@
+paths:
+  /api/messages:
+    get:
+      summary: Obtener todos los mensajes creados
+      description: Obtener todos los mensajes creados en la base de datos
+      tags:
+        - Message
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Arreglo de todos los mensajes creados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/responses/messages"
+        "500":
+          description: Error en el servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    post:
+      summary: Crear nuevo mensaje
+      description: Crear nuevo mensaje de usuario en la base de datos
+      tags:
+        - Message
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/newMessage"
+      responses:
+        "200":
+          description: Mensaje creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/messages"
+        "400":
+          description: Error en validación de datos
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/ErrorValidation"
+        "500":
+          description: Error en el servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    delete:
+      summary: Eliminar mensajes creado
+      description: Eliminar todos los mensajes creados
+      tags:
+        - Message
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: plan id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Mensajes eliminado correctamente
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Mensajes eliminados
+        "500":
+          description: Error en el servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+components:
+  schemas:
+    newMessage:
+      type: object
+      properties:
+        content:
+          type: string
+          example: "Hola IA" 
+
+  responses:
+    ErrorValidation:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Mensaje de error
+          example: WRONG_DATA
+        description:
+          type: array
+          items:
+            type: object
+            properties:
+              item:
+                type: string
+                example: 'Must be a string'
+    messages:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        sender:
+          type: string
+          example: user
+        content:
+          type: string
+          example: "Hola IA"
+        createdAt:
+          type: string
+          example: "2023-11-14T23:34:58.924Z"
+        updatedAt:
+          type: string
+          example: "2023-11-14T23:34:58.924Z"
