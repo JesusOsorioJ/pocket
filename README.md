@@ -92,12 +92,12 @@ Con las dos terminales levantadas, podrá ver la página en la URL mostrada por 
 
 1. Escribe un mensaje en el campo de entrada y envíalo con el botón de enviar (✈️).
 2. Observa los mensajes en tiempo real gracias a Socket.IO.
-![alt text](<Video de WhatsApp 2025-01-23 a las 11.33.30_318d7098.gif>)
+![alt text](/assets/socket.gif)
 3. Cambia entre los modos claro y oscuro usando el botón de tema.
 4. Cambia entre español e inglés usando los botones de idioma.
-![alt text](<Vite + React + TS - Google Chrome 2025-01-23 11-04-02.gif>)
+![alt text](/assets/theme.gif)
 5. Elimina todos los mensajes presionando el botón 🗑️ (confirmación requerida).
-![alt text](<Vite + React + TS - Google Chrome 2025-01-23 11-04-34.gif>)
+![alt text](/assets/delete.gif)
 
 
 ---
