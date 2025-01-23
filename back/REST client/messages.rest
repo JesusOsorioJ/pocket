@@ -1,0 +1,30 @@
+### Probar endpoint IA
+POST http://pocki-api-env-1.eba-pprtwpab.us-east-1.elasticbeanstalk.com/api/getOpenaiResponse
+Accept: application/json
+Content-Type: application/json
+
+{
+    "input":"Hola IA"
+}
+
+### Consultar todos los mensajes
+GET http://localhost:3000/api/messages/
+Accept: application/json
+Content-Type: application/json
+
+
+### Crear mensaje por usuario
+POST http://localhost:3000/api/messages/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "content":"cuanto es 1 + 1"
+}
+
+
+### Elimminar todos los mensajes
+DELETE http://localhost:3000/api/messages/
+Accept: application/json
+Content-Type: application/json
+
