@@ -8,7 +8,7 @@ Este proyecto es una aplicación de chat interactiva desarrollada con React, Typ
 
 ### **Frontend:**
 - React
-- TypeScript 
+- TypeScript  
 - Tailwind CSS
 - i18next (para la traducción)
 - Socket.IO Client
