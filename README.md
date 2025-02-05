@@ -5,7 +5,7 @@ Este proyecto es una aplicación de chat interactiva desarrollada con React, Typ
 ---
 
 ## **Tecnologías usadas**
-
+ 
 ### **Frontend:**
 - React
 - TypeScript  
