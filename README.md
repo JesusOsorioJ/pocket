@@ -22,7 +22,7 @@ Este proyecto es una aplicación de chat interactiva desarrollada con React, Typ
 
 ---
 
-## **Instalación y configuración**
+## **Instalación y configuración** 
 
 ### **Requisitos previos:**
 1. Node.js instalado (v16 o superior).
